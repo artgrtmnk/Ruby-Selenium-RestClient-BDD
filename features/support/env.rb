@@ -3,6 +3,7 @@ require 'selenium-webdriver'
 require 'cucumber'
 require 'page-object/page_factory'
 require 'webdrivers'
+require 'solid_assert'
 
 begin
   $driver = Selenium::WebDriver.for(:"chrome")
@@ -12,4 +13,5 @@ rescue Exception => e
   Process.exit(0)
 end
 
+SolidAssert.enable_assertions
 World(PageObject::PageFactory)
