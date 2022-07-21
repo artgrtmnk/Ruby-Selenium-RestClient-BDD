@@ -14,12 +14,19 @@ class ApiClient
     end
 
     def send_request
-        RestClient::Request.execute(url: @basic_url, method: self.set_request_method, 
-            payload: @body, headers: @headers)
+        RestClient::Request.execute(
+            url: @basic_url,
+            method: self.set_request_method,
+            headers: @headers,
+            payload: @body)
     end
 
     def assert_response_code(code, response)
         assert code == response.code, "Response code is not equal #{code}"
+    end
+
+    def assert_response_body_contains(compare_string, response)
+        assert response.body.include?(compare_string), "Response body doesn't contains expected payload."
     end
 
     private
