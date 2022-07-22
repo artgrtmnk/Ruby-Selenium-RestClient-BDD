@@ -6,12 +6,7 @@ class UserData
 
     def initialize
         @id = nil
-        @user = {
-            name: nil,
-            gender: nil,
-            email: nil,
-            status: nil
-        }
+        @user = nil
     end
 
     # if you want to create your own user, put it as an argument using this schema

@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rest-client'
 require 'solid_assert'
+require 'json'
 
 class ApiClient
     attr_accessor :basic_url, :token, :method, :headers, :body
@@ -14,6 +15,7 @@ class ApiClient
     end
 
     def send_request
+        RestClient.log = 'stdout' # Debugger
         RestClient::Request.execute(
             url: @basic_url,
             method: self.set_request_method,
@@ -23,6 +25,7 @@ class ApiClient
 
     def assert_response_code(code, response)
         assert code == response.code, "Response code is not equal #{code}"
+        @basic_url = @token = @method = @headers = @body = nil
     end
 
     def assert_response_body_contains(compare_string, response)
@@ -32,7 +35,7 @@ class ApiClient
     private
 
     def set_request_method
-        @method = method.downcase
+        @method.downcase!
         case @method
         when 'get'
             :get

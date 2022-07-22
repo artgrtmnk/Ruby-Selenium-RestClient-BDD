@@ -19,34 +19,16 @@ When('I set request headers') do
 end
 
 When('I add id to the url') do
-    response_body = JSON.parse(response.body)
-
-    api_client.basic_url+=response_body['id'].to_s
+    api_client.basic_url+=user_data.id
 end
 
 When('I set a request body') do |doc_string|
-    api_client.body=user_data.generate_user_data
-    p 0
-    p api_client.body.class
-    p api_client.body
-    #doc_string.empty? ? api_client.body=user_data.generate_user_data : api_client.body=JSON.parse(doc_string.to_json)
+    doc_string.empty? ? api_client.body=user_data.generate_user_data : api_client.body = JSON.parse(eval(doc_string).to_json)
 end
-
-When('I set a request body a') do |doc_string|
-    api_client.body=JSON.parse(doc_string.to_s)
-    p 1
-    #p api_client.body.class
-    p JSON.parse(api_client.body).class
-    p JSON.parse(api_client.body)
-    #p api_client.body.split.join(' ')
-  end
   
 When('I send HTTP request') do
     response = api_client.send_request
-    p 2
     p JSON.parse(response.body)
-    #p response.body.split.join(' ')
-    p response.body.class
 end
   
 Then('Response code is {int}') do |int|
@@ -55,5 +37,10 @@ end
 
 Then('Response contains') do |doc_string|
     api_client.assert_response_body_contains(doc_string, response)
+  end
+
+  Then('I save user id') do
+    response_body = JSON.parse(response.body)
+    user_data.id=response_body['id'].to_s
   end
 
