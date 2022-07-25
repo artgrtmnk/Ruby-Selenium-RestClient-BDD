@@ -1,6 +1,4 @@
-require 'rubygems'
 require 'rest-client'
-require 'solid_assert'
 require 'json'
 
 class ApiClient
@@ -8,28 +6,17 @@ class ApiClient
 
     def initialize
         @basic_url = nil
-        @token = nil
         @method = nil
-        @headers = {}
+        @headers = { Authorization: ENV['GOREST_TOKEN'] }
         @body = nil
     end
 
     def send_request
-        RestClient.log = 'stdout' # Debugger
         RestClient::Request.execute(
             url: @basic_url,
             method: self.set_request_method,
             headers: @headers,
             payload: @body)
-    end
-
-    def assert_response_code(code, response)
-        assert code == response.code, "Response code is not equal #{code}"
-        @basic_url = @token = @method = @headers = @body = nil
-    end
-
-    def assert_response_body_contains(compare_string, response)
-        assert response.body.include?(compare_string), "Response body doesn't contains expected payload."
     end
 
     private
