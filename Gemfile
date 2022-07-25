@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'selenium-webdriver'
+# General
 gem 'cucumber'
 gem 'rspec'
-gem 'page-object'
 gem 'rspec-expectations'
-gem 'webdrivers'
-gem 'rest-client'
 gem 'solid_assert'
 gem 'faker'
+
+# UI
+gem 'selenium-webdriver'
+gem 'webdrivers'
+gem 'page-object'
+# API
+gem 'rest-client'

@@ -1,4 +1,5 @@
 require 'page-object'
+require 'solid_assert'
 
 class LoginPage
     include PageObject
@@ -8,7 +9,7 @@ class LoginPage
     text_field(:email_field, id: "sso_username")
     text_field(:password_field, id: "ssopassword")
     button(:login_button, id: "signin_button")
-    div(:error_field, xpath: "//span[@id='errormsg']/div")
+    span(:error_message, id: "errormsg")
     
     def enter_email(email) 
         self.email_field = email
@@ -22,7 +23,9 @@ class LoginPage
         login_button
     end
 
-    def check_error_message(error_message)
-        self.error_field.include?(error_message)
+    def check_error_message(error)
+        $wait.until { $driver.find_element(id: 'errormsg').text == 'Invalid username and/or password.' }
+
+        assert self.error_message.include?(error_message), "Element doesn't contains this text."
     end
   end

@@ -2,22 +2,27 @@ require 'json'
 require_relative '../helpers/api_client.rb'
 require_relative '../helpers/user_data.rb'
 require_relative '../helpers/assertions.rb'
+require_relative '../helpers/api_helpers.rb'
 
 api_client = ApiClient.new
+
 user_data = UserData.new
 assertions = Assertions.new
+api_helpers = ApiHelpers.new
 
 Given('I set up {string} api endpoint with url {string}') do |method, url|
     api_client.method=method
-    api_client.basic_url=url
+    api_client.url=url
 end
 
 When('I add id to the url') do
-    api_client.basic_url+=user_data.id
+    api_client.url+=user_data.user['id']
 end
 
-When('I set a request body') do |doc_string|
-    doc_string.empty? ? api_client.body=user_data.generate_user_data : api_client.body = JSON.parse(eval(doc_string).to_json)
+When('I set a request body') do |feature_body|
+    feature_body.empty? ? 
+        api_client.body=user_data.generate_user_data : 
+        api_client.body = api_helpers.set_body_formatted(feature_body)
 end
   
 When('I send HTTP request') do
@@ -26,14 +31,15 @@ end
   
 Then('Response code is {int}') do |int|
     assertions.assert_response_code(int, @response)
+    api_client.body=nil # Making body nil, because next request could have an empty body and it could cause errors
 end
 
-Then('Response contains') do |doc_string|
-    assertions.assert_response_body_contains(doc_string, @response)
-  end
+Then('Response contains') do |feature_assertion|
+    assertions.assert_contains(feature_assertion, @response.body)
+end
 
-  Then('I save user id') do
+Then('I save user id') do
     response_body = JSON.parse(@response.body)
-    user_data.id=response_body['id'].to_s
-  end
+    user_data.user['id']=response_body['id'].to_s
+end
 

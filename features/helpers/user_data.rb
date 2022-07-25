@@ -2,10 +2,9 @@ require 'faker'
 require 'json'
 
 class UserData
-    @id = nil
     @user = nil
     
-    attr_accessor :user, :id
+    attr_accessor :user
 
     # if you want to create your own user, put it as an argument using this schema
     def generate_user_data (request_body = {
@@ -38,6 +37,5 @@ class UserData
     def set_user_from_response(response)
         query_json = JSON.parse(response.body)
         @user = query_json['data']['createUser']['user']
-        p @user
     end
 end

@@ -1,18 +1,18 @@
 require 'solid_assert'
+require 'page-object'
+require 'selenium-webdriver'
 
 class Assertions
     def assert_response_code(code, response)
         assert code == response.code, "Response code is not equal #{code}"
-        @basic_url = @method = @body = nil
     end
     
-    def assert_response_body_contains(compare_string, response)
-        p response.body
-        assert response.body.include?(compare_string), "Response body doesn't contains expected payload."
+    def assert_contains(compare_string, assertion_objective)
+        assert assertion_objective.include?(compare_string), "Element or response doesn't contains expected payload."
     end
 
-    def assert_response_body_not_contains(compare_string, response)
-        assert !response.body.include?(compare_string), "Something went wrong."
+    def assert_not_contains(compare_string, assertion_objective)
+        assert !assertion_objective.include?(compare_string), "Something went wrong."
     end
 end
 

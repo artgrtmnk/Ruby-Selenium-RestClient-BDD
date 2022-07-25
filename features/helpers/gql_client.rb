@@ -21,8 +21,4 @@ class GraphqlClient
             headers: @@headers,
             payload: @body)
     end
-
-    def set_body_formatted multiline_body
-        @body=JSON.parse(eval(multiline_body).to_json)
-    end
 end

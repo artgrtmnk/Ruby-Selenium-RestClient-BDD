@@ -2,20 +2,22 @@ require 'rest-client'
 require 'json'
 
 class ApiClient
-    attr_accessor :basic_url, :token, :method, :headers, :body
+    @@token = ENV['GOREST_TOKEN']
+    @@headers = {
+        Authorization: "#{@@token}"
+    }
 
-    def initialize
-        @basic_url = nil
-        @method = nil
-        @headers = { Authorization: ENV['GOREST_TOKEN'] }
-        @body = nil
-    end
+    @url = nil
+    @body = nil
+    @method = nil
+
+    attr_accessor :url, :method, :body
 
     def send_request
         RestClient::Request.execute(
-            url: @basic_url,
+            url: @url,
             method: self.set_request_method,
-            headers: @headers,
+            headers: @@headers,
             payload: @body)
     end
 
