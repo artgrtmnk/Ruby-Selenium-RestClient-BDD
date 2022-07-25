@@ -1,5 +1,5 @@
 # Ruby-Selenium-RestClient-BDD
-**For UI: Selenium and Page-Object**
+**For UI: Selenium-Webdriver and Page-Object**
 
 **For API: Rest-Client**
 
