@@ -1,5 +1,5 @@
 # Ruby-Selenium-RestClient-BDD
-### Core implementation 
+## Core
 **For UI: Selenium-Webdriver and Page-Object**
 
 **For API: Rest-Client**
@@ -11,7 +11,7 @@
 2. Install [Bundler](https://bundler.io)
 3. Download the project
 4. Get your token for [GoRest](https://gorest.co.in/my-account/access-tokens) (You need to register/login first)
-5. Past your token into `features/support/env.rb` into the `GOREST_TOKEN` var (line 9).
+5. Past your token into `features/support/env.rb` into the `GOREST_TOKEN` var, line 9.
 6. In the project's terminal enter `bundle install`
 
 ### Running tests
