@@ -18,6 +18,7 @@
 You can start whole test suite with `bundle exec cucumber`
 
 As well, you can start it separately with `bundle exec cucumber features/***.feature`
+
 Note: you need to paste feature name instead of `***`
 
 
