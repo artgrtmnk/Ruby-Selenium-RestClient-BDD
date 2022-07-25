@@ -1,3 +1,9 @@
+/features/actual_images
+/features/expected_images
+/features/image_difference
+/features/screenshots
+.DS_Store
+
 *.gem
 *.rbc
 /.config
