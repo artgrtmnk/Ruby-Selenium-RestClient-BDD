@@ -1,7 +1,9 @@
 # Ruby-Selenium-RestClient-BDD
-UI: Selenium and Page-Object 
-API: Rest-Client
-BDD: Cucumber
+**For UI: Selenium and Page-Object**
+
+**For API: Rest-Client**
+
+**For BDD: Cucumber**
 
 ### Installation
 1. Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
