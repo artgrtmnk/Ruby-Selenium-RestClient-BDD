@@ -1,3 +1,5 @@
+@api
+@rest
 Feature: Gorest Rest API
 
   Scenario: Get user list

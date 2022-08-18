@@ -5,8 +5,9 @@ require 'cucumber'
 require 'page-object/page_factory'
 require 'webdrivers'
 require 'solid_assert'
+require 'allure-cucumber'
 
-ENV['GOREST_TOKEN']="Bearer PASTE_YOUR_TOKEN_OVER_HERE"
+ENV['GOREST_TOKEN']="YOUR_TOKEN"
 
 begin
   $driver = Selenium::WebDriver.for :chrome

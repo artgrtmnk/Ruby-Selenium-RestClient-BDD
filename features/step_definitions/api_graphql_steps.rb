@@ -5,11 +5,11 @@ require_relative '../helpers/api_helpers.rb'
 
 gql_client = GraphqlClient.new
 
-assertions = Assertions.new
 user_data = UserData.new
 api_helpers = ApiHelpers.new
 
 Given('GQL I set up GraphQL endpoint with url {string}') do |feature_url|
+    gql_client.method = :post
     gql_client.url = feature_url
 end
   
@@ -22,15 +22,15 @@ When('GQL I send a GQL request') do
 end
   
 Then('GQL Response code is {int}') do |int|
-    assertions.assert_response_code(int, @response)
+    Assertions.assert_response_code(int, @response)
 end
 
 Then('GQL Response contains') do |feature_assertion|
-    assertions.assert_contains(feature_assertion, @response.body) 
+    Assertions.assert_contains(feature_assertion, @response.body) 
 end
 
 Then('GQL Response does not contains') do |feature_assertion|
-    assertions.assert_not_contains(feature_assertion, @response.body) 
+    Assertions.assert_not_contains(feature_assertion, @response.body) 
   end
   
 Then('GQL I save user data') do

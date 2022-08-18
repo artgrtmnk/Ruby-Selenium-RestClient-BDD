@@ -1,3 +1,5 @@
+@api
+@gql
 Feature: Gorest GraphQL API
 
   Background:

@@ -6,6 +6,7 @@ gem 'rspec'
 gem 'rspec-expectations'
 gem 'solid_assert'
 gem 'faker'
+gem 'allure-cucumber'
 
 # UI
 gem 'selenium-webdriver'

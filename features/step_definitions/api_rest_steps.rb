@@ -7,11 +7,12 @@ require_relative '../helpers/api_helpers.rb'
 api_client = ApiClient.new
 
 user_data = UserData.new
-assertions = Assertions.new
 api_helpers = ApiHelpers.new
 
 Given('I set up {string} api endpoint with url {string}') do |method, url|
-    api_client.method=method
+    p "PRIVET"
+    p api_client.set_request_method(method)
+    api_client.method=api_client.set_request_method(method)
     api_client.url=url
 end
 
@@ -30,12 +31,12 @@ When('I send HTTP request') do
 end
   
 Then('Response code is {int}') do |int|
-    assertions.assert_response_code(int, @response)
+    Assertions.assert_response_code(int, @response)
     api_client.body=nil # Making body nil, because next request could have an empty body and it could cause errors
 end
 
 Then('Response contains') do |feature_assertion|
-    assertions.assert_contains(feature_assertion, @response.body)
+    Assertions.assert_contains(feature_assertion, @response.body)
 end
 
 Then('I save user id') do
