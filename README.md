@@ -12,6 +12,7 @@
 - BDD: Cucumber
 - UI: Selenium, Page-Object(gem)
 - API: Rest-Client
+- Reporting: Allure
 
 ### Installation
 1. Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
@@ -25,3 +26,12 @@
 ### Running tests
 1. You can start whole test suite with `bundle exec cucumber`
 2. As well, you can start it separately with `bundle exec cucumber features/***.feature`. You need to specify feature file name instead of `***`.
+3. Also, you can start prefered features, using `bundle exec cucumber --tag @***`. Instead of *** you need to specify a tag. List of available tags: api, rest, gql, ui.
+
+### After test
+- Framework creates allure reports, that located in `allure-results` folder.
+- You can open the HTML report after test using `allure serve allure-results` command via terminal in the project's root folder.
+- **Note: Allure folder would be cleared within the next test run.**
+
+### Post scriptum
+**_Antipattern was used in this sample framework: Test scenarios from API feature files are running sequentially, just because that's a sample. Never do it in a real project. Each test scenario should be independent and all of the pre-conditions should be done within the Given steps!_**
