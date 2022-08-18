@@ -3,6 +3,7 @@
 /features/image_difference
 /features/screenshots
 .DS_Store
+allure-results
 
 *.gem
 *.rbc

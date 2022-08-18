@@ -9,6 +9,7 @@ require 'allure-cucumber'
 
 ENV['GOREST_TOKEN']="YOUR_TOKEN"
 
+# Selenium WebDriver
 begin
   $driver = Selenium::WebDriver.for :chrome
   $driver.manage.timeouts.implicit_wait = 10
@@ -19,7 +20,17 @@ rescue Exception => e
   Process.exit(0)
 end
 
-# RestClient.log = 'stdout' # API Debugger
+# Allure Reporter
+AllureCucumber.configure do |config|
+  config.results_directory = "allure-results"
+  config.clean_results_directory = true
+  config.logging_level = Logger::INFO
+  config.logger = Logger.new($stdout, Logger::DEBUG)
+end
 
+# API Debugger - Uncomment/Comment the below line to turn on/off
+# RestClient.log = 'stdout' 
+
+# Globals
 SolidAssert.enable_assertions
 World(PageObject::PageFactory)

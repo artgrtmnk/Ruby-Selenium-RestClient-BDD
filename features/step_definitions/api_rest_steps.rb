@@ -10,8 +10,6 @@ user_data = UserData.new
 api_helpers = ApiHelpers.new
 
 Given('I set up {string} api endpoint with url {string}') do |method, url|
-    p "PRIVET"
-    p api_client.set_request_method(method)
     api_client.method=api_client.set_request_method(method)
     api_client.url=url
 end
