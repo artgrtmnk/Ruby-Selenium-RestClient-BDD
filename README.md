@@ -15,16 +15,17 @@
 - Reporting: Allure
 
 ### Installation
-1. Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
-2. Install [Bundler](https://bundler.io)
-3. Download the project
-4. Get your token for [GoRest](https://gorest.co.in/my-account/access-tokens) (You need to register/login first)
-5. Paste your token into `features/support/env.rb` into the `GOREST_TOKEN` var, line 10.
-6. In the project's terminal enter `bundle install`
-7. Additional step: You need to install [Allure](https://github.com/allure-framework/allure2), if you want to use it.
+1. Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
+2. Install [rbenv](https://github.com/rbenv/rbenv#installation).
+3. Install [Bundler](https://bundler.io).
+4. Download the project.
+5. Get your token for [GoRest](https://gorest.co.in/my-account/access-tokens) (You need to register/login first).
+6. Paste your token into `features/support/env.rb` into the `GOREST_TOKEN` var, line 10.
+7. In the project's terminal enter `bundle install`.
+8. Additional step: You need to install [Allure](https://github.com/allure-framework/allure2), if you want to use it.
 
 ### Running tests
-1. You can start whole test suite with `bundle exec cucumber`
+1. You can start whole test suite with `bundle exec cucumber`.
 2. As well, you can start it separately with `bundle exec cucumber features/***.feature`. You need to specify feature file name instead of `***`.
 3. Also, you can start prefered features, using `bundle exec cucumber --tag @***`. Instead of *** you need to specify a tag. List of available tags: **api, rest, gql, ui**. _For example, `bundle exec cucumber --tag @api` would start both: RestFull and GraphQL features_.
 
