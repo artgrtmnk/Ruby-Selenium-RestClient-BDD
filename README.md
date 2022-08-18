@@ -26,7 +26,7 @@
 ### Running tests
 1. You can start whole test suite with `bundle exec cucumber`
 2. As well, you can start it separately with `bundle exec cucumber features/***.feature`. You need to specify feature file name instead of `***`.
-3. Also, you can start prefered features, using `bundle exec cucumber --tag @***`. Instead of *** you need to specify a tag. List of available tags: **api, rest, gql, ui**.
+3. Also, you can start prefered features, using `bundle exec cucumber --tag @***`. Instead of *** you need to specify a tag. List of available tags: **api, rest, gql, ui**. _For example, `bundle exec cucumber --tag @api` would start both: RestFull and GraphQL features_.
 
 ### After test
 - Framework creates allure reports, that located in `allure-results` folder.
