@@ -19,7 +19,7 @@
 2. Install [Bundler](https://bundler.io)
 3. Download the project
 4. Get your token for [GoRest](https://gorest.co.in/my-account/access-tokens) (You need to register/login first)
-5. Paste your token into `features/support/env.rb` into the `GOREST_TOKEN` var, line 9.
+5. Paste your token into `features/support/env.rb` into the `GOREST_TOKEN` var, line 10.
 6. In the project's terminal enter `bundle install`
 7. Additional step: You need to install [Allure](https://github.com/allure-framework/allure2), if you want to use it.
 
