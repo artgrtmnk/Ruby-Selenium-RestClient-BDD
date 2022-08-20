@@ -12,6 +12,7 @@ pipeline {
         }
         stage ('Dependencies Installation Stage') {
             steps {
+                sh 'gem install bundler:2.3.17'
                 sh 'bundle install'
             }
         }
