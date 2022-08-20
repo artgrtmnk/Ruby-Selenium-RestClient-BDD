@@ -6,8 +6,11 @@ require 'page-object/page_factory'
 require 'webdrivers'
 require 'solid_assert'
 require 'allure-cucumber'
+require 'json'
 
-ENV['GOREST_TOKEN']="YOUR_TOKEN"
+# Token parsing
+tokenJson = JSON.parse(File.read('./token.json'))
+ENV['GOREST_TOKEN']="Bearer #{tokenJson['token']}"
 
 # Selenium WebDriver
 begin
@@ -25,7 +28,6 @@ AllureCucumber.configure do |config|
   config.results_directory = "allure-results"
   config.clean_results_directory = true
   config.logging_level = Logger::INFO
-  config.logger = Logger.new($stdout, Logger::DEBUG)
 end
 
 # API Debugger - Uncomment/Comment the below line to turn on/off
