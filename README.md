@@ -14,6 +14,7 @@
 - API: Rest-Client
 - Reporting: Allure
 
+## Locally on your machine
 ### Installation
 1. Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
 2. Install [rbenv](https://github.com/rbenv/rbenv#installation).
@@ -32,6 +33,28 @@
 ### After test
 - Framework creates allure reports, that located in `allure-results` folder.
 - You can open the HTML report after test using `allure serve allure-results` command via terminal in the project's root folder.
+- **Note: Allure folder would be cleared within the next test run.**
+
+## Jenkins CI
+### Installation
+1. Install [Jenkins](https://www.jenkins.io).
+2. Install default plugins in Jenkins.
+3. As well there is a list of plugins that you need to install additionally via Jenkins > Manage Jenkins > Manage Plugins: Allure Jenkins Plugin,Git Plugin, GitHub plugin, HTML Publisher plugin.
+4. Create a new Job with `Pipeline` type.
+5. Job configuration:
+- Enable `GitHub Project` checkbox and paste my project's git url
+- Enable `This project is parameterised` checkbox and add a String parameter named `token`, it is important!
+- Scroll down to the Pipeline section and choose `Pipeline script from SCM`, then choose Git as an option.
+- Paste my project's url to the repo's url field: `https://github.com/artgrtmnk/Ruby-Selenium-RestClient-BDD/` and specify the branch name a bit lower as: `*/main`.
+- Apply and Save the pipeline.
+
+### Running tests
+1. Click on `Build with Parameters` in the left nav menu.
+2. Paste your GoRest token into the token var field.
+3. Click `Build` button
+
+### After test
+- Allure report would be generated automatically. The only thing you need to do is to click on `Allure Report` button in the left nav menu.
 - **Note: Allure folder would be cleared within the next test run.**
 
 ### Post scriptum
